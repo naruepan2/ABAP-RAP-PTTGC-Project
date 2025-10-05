@@ -1,0 +1,339 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName: 'Create Change Asset', typeNamePlural: 'Create Change Assets' }
+
+@UI.createHidden: true
+@UI.updateHidden: true
+
+// Search Term #LineItemHighlight
+@UI.lineItem: [{criticality: 'ReturnCriticalityCode'}]
+
+annotate view ZC_RTR_CreateChangeAssetTP with
+
+{
+  @UI.facet: [ { id: 'idIdentification', type: #IDENTIFICATION_REFERENCE, label: 'CreateChangeAsset', position: 10 } ]
+  @UI.hidden: true
+  AssetUUID;
+
+  @UI.identification: [ { position: 1,
+                          label: '',
+                          criticality: 'ReturnCriticalityCode',
+                          criticalityRepresentation: #WITH_ICON } ]
+  @UI.lineItem: [ { position: 1,
+                    importance: #MEDIUM,
+                    label: '',
+                    criticality: 'ReturnCriticalityCode',
+                    criticalityRepresentation: #WITH_ICON } ]
+  @UI.textArrangement: #TEXT_ONLY                  
+  ReturnType;
+
+  @UI.identification: [ { position: 2, label: '' } ]
+  @UI.lineItem: [ { position: 2, importance: #MEDIUM, label: '' } ]
+  ReturnMessage;
+
+  @UI.identification: [ { position: 3, label: '' } ]
+  @UI.lineItem: [ { position: 3, importance: #MEDIUM, label: '' },
+                  { position: 10,
+                    type: #FOR_ACTION,
+                    dataAction: 'UploadAssetFileContent',
+                    label: 'Upload',
+                    hidden: true },
+                  { position: 20, type: #FOR_ACTION, dataAction: 'SimulateCreateChangeAsset', label: 'Simulate' },
+                  { position: 30, type: #FOR_ACTION, dataAction: 'PostCreateChangeAsset', label: 'Create/Change' },
+                  { position: 40,
+                    type: #FOR_ACTION,
+                    dataAction: 'DownloadAssetTemplate',
+                    label: 'Download Template',
+                    hidden: true } ]
+  ProcessMode;
+
+  @UI.identification: [ { position: 10, label: '' } ]
+  @UI.lineItem: [ { position: 10, importance: #MEDIUM, label: '' } ]
+  MasterFixedAsset;
+
+  @UI.identification: [ { position: 20, label: '' } ]
+  @UI.lineItem: [ { position: 20, importance: #MEDIUM, label: '' } ]
+  FixedAsset;
+
+  @UI.identification: [ { position: 30, label: '' } ]
+  @UI.lineItem: [ { position: 30, importance: #MEDIUM, label: '' } ]
+  AssetClass;
+
+  @UI.identification: [ { position: 40, label: '' } ]
+  @UI.lineItem: [ { position: 40, importance: #MEDIUM, label: '' } ]
+  CompanyCode;
+
+  @UI.identification: [ { position: 50, label: '' } ]
+  @UI.lineItem: [ { position: 50, importance: #MEDIUM, label: '' } ]
+  FixedAssetDescription;
+
+  @UI.identification: [ { position: 60, label: '' } ]
+  @UI.lineItem: [ { position: 60, importance: #MEDIUM, label: '' } ]
+  AssetAdditionalDescription;
+
+  @UI.identification: [ { position: 70, label: '' } ]
+  @UI.lineItem: [ { position: 70, importance: #MEDIUM, label: '' } ]
+  MasterFixedAssetDescription;
+
+  @UI.identification: [ { position: 80, label: '' } ]
+  @UI.lineItem: [ { position: 80, importance: #MEDIUM, label: '' } ]
+  AssetSerialNumber;
+
+  @UI.identification: [ { position: 90, label: '' } ]
+  @UI.lineItem: [ { position: 90, importance: #MEDIUM, label: '' } ]
+  Inventory;
+
+  @UI.identification: [ { position: 100, label: '' } ]
+  @UI.lineItem: [ { position: 100, importance: #MEDIUM, label: '' } ]
+  Quantity;
+
+  @UI.identification: [ { position: 110, label: '' } ]
+  @UI.lineItem: [ { position: 110, importance: #MEDIUM, label: '' } ]
+  Baseunit;
+
+  @UI.identification: [ { position: 120, label: '' } ]
+  @UI.lineItem: [ { position: 120, importance: #MEDIUM, label: '' } ]
+  LastInventoryDate;
+
+  @UI.identification: [ { position: 130, label: '' } ]
+  @UI.lineItem: [ { position: 130, importance: #MEDIUM, label: '' } ]
+  InventoryNote;
+
+  @UI.identification: [ { position: 140, label: '' } ]
+  @UI.lineItem: [ { position: 140, importance: #MEDIUM, label: '' } ]
+  ValidityStartDate;
+
+  @UI.identification: [ { position: 150, label: '' } ]
+  @UI.lineItem: [ { position: 150, importance: #MEDIUM, label: '' } ]
+  CostCenter;
+
+  @UI.identification: [ { position: 160, label: '' } ]
+  @UI.lineItem: [ { position: 160, importance: #MEDIUM, label: '' } ]
+  ResponsibleCostCenter;
+
+  @UI.identification: [ { position: 170, label: '' } ]
+  @UI.lineItem: [ { position: 170, importance: #MEDIUM, label: '' } ]
+  Plant;
+
+  @UI.identification: [ { position: 180, label: '' } ]
+  @UI.lineItem: [ { position: 180, importance: #MEDIUM, label: '' } ]
+  AssetLocation;
+
+  @UI.identification: [ { position: 190, label: '' } ]
+  @UI.lineItem: [ { position: 190, importance: #MEDIUM, label: '' } ]
+  Room;
+
+  @UI.identification: [ { position: 200, label: '' } ]
+  @UI.lineItem: [ { position: 200, importance: #MEDIUM, label: '' } ]
+  VehicleLicensePlateNumber;
+
+  @UI.identification: [ { position: 210, label: '' } ]
+  @UI.lineItem: [ { position: 210, importance: #MEDIUM, label: '' } ]
+  PersonnelNumber;
+
+  @UI.identification: [ { position: 220, label: '' } ]
+  @UI.lineItem: [ { position: 220, importance: #MEDIUM, label: '' } ]
+  ProfitCenter;
+
+  @UI.identification: [ { position: 230, label: '' } ]
+  @UI.lineItem: [ { position: 230, importance: #MEDIUM, label: '' } ]
+  Segment;
+
+  @UI.identification: [ { position: 240, label: '' } ]
+  @UI.lineItem: [ { position: 240, importance: #MEDIUM, label: '' } ]
+  Group1AssetEvaluationKey;
+
+  @UI.identification: [ { position: 250, label: '' } ]
+  @UI.lineItem: [ { position: 250, importance: #MEDIUM, label: '' } ]
+  Group2AssetEvaluationKey;
+
+  @UI.identification: [ { position: 260, label: '' } ]
+  @UI.lineItem: [ { position: 260, importance: #MEDIUM, label: '' } ]
+  Group3AssetEvaluationKey;
+
+  @UI.identification: [ { position: 270, label: '' } ]
+  @UI.lineItem: [ { position: 270, importance: #MEDIUM, label: '' } ]
+  Group4AssetEvaluationKey;
+
+  @UI.identification: [ { position: 280, label: '' } ]
+  @UI.lineItem: [ { position: 280, importance: #MEDIUM, label: '' } ]
+  Group5AssetEvaluationKey;
+
+  @UI.identification: [ { position: 290, label: '' } ]
+  @UI.lineItem: [ { position: 290, importance: #MEDIUM, label: '' } ]
+  FixedAssetGroup;
+
+  @UI.identification: [ { position: 300, label: '' } ]
+  @UI.lineItem: [ { position: 300, importance: #MEDIUM, label: '' } ]
+  Supplier;
+
+  @UI.identification: [ { position: 310, label: '' } ]
+  @UI.lineItem: [ { position: 310, importance: #MEDIUM, label: '' } ]
+  AssetSupplierName;
+
+  @UI.identification: [ { position: 320, label: '' } ]
+  @UI.lineItem: [ { position: 320, importance: #MEDIUM, label: '' } ]
+  AssetStatusNewPurchase;
+
+  @UI.identification: [ { position: 330, label: '' } ]
+  @UI.lineItem: [ { position: 330, importance: #MEDIUM, label: '' } ]
+  AssetStatusAtPurchase;
+
+  @UI.identification: [ { position: 340, label: '' } ]
+  @UI.lineItem: [ { position: 340, importance: #MEDIUM, label: '' } ]
+  PartnerCompany;
+
+  @UI.identification: [ { position: 350, label: '' } ]
+  @UI.lineItem: [ { position: 350, importance: #MEDIUM, label: '' } ]
+  AssetCountryOfOrigin;
+
+  @UI.identification: [ { position: 360, label: '' } ]
+  @UI.lineItem: [ { position: 360, importance: #MEDIUM, label: '' } ]
+  AssetTypeName;
+
+  @UI.identification: [ { position: 370, label: '' } ]
+  @UI.lineItem: [ { position: 370, importance: #MEDIUM, label: '' } ]
+  InvestmentOrder;
+
+  @UI.identification: [ { position: 380, label: '' } ]
+  @UI.lineItem: [ { position: 380, importance: #MEDIUM, label: '' } ]
+  InvestmentProjectWbsElement;
+
+  @UI.identification: [ { position: 390, label: '' } ]
+  @UI.lineItem: [ { position: 390, importance: #MEDIUM, label: '' } ]
+  LeaseSupplier;
+
+  @UI.identification: [ { position: 400, label: '' } ]
+  @UI.lineItem: [ { position: 400, importance: #MEDIUM, label: '' } ]
+  LeaseAgreement;
+
+  @UI.identification: [ { position: 410, label: '' } ]
+  @UI.lineItem: [ { position: 410, importance: #MEDIUM, label: '' } ]
+  LeaseAgreementDate;
+
+  @UI.identification: [ { position: 420, label: '' } ]
+  @UI.lineItem: [ { position: 420, importance: #MEDIUM, label: '' } ]
+  LeaseTermEndDate;
+
+  @UI.identification: [ { position: 430, label: '' } ]
+  @UI.lineItem: [ { position: 430, importance: #MEDIUM, label: '' } ]
+  LeaseTermStartDate;
+
+  @UI.identification: [ { position: 440, label: '' } ]
+  @UI.lineItem: [ { position: 440, importance: #MEDIUM, label: '' } ]
+  LeaseDurationInFiscalYears;
+
+  @UI.identification: [ { position: 450, label: '' } ]
+  @UI.lineItem: [ { position: 450, importance: #MEDIUM, label: '' } ]
+  LeaseDurationInFiscalPerio;
+
+  @UI.identification: [ { position: 460, label: '' } ]
+  @UI.lineItem: [ { position: 460, importance: #MEDIUM, label: '' } ]
+  LeaseType;
+
+  @UI.identification: [ { position: 470, label: '' } ]
+  @UI.lineItem: [ { position: 470, importance: #MEDIUM, label: '' } ]
+  CurrencyCode;
+
+  @UI.identification: [ { position: 480, label: '' } ]
+  @UI.lineItem: [ { position: 480, importance: #MEDIUM, label: '' } ]
+  BaseValueAsNew;
+
+  @UI.identification: [ { position: 490, label: '' } ]
+  @UI.lineItem: [ { position: 490, importance: #MEDIUM, label: '' } ]
+  PurchasePrice;
+
+  @UI.identification: [ { position: 500, label: '' } ]
+  @UI.lineItem: [ { position: 500, importance: #MEDIUM, label: '' } ]
+  LeasedAssetNote;
+
+  @UI.identification: [ { position: 510, label: '' } ]
+  @UI.lineItem: [ { position: 510, importance: #MEDIUM, label: '' } ]
+  NoLeasePayments;
+
+  @UI.identification: [ { position: 520, label: '' } ]
+  @UI.lineItem: [ { position: 520, importance: #MEDIUM, label: '' } ]
+  PaymentCycle;
+
+  @UI.identification: [ { position: 530, label: '' } ]
+  @UI.lineItem: [ { position: 530, importance: #MEDIUM, label: '' } ]
+  AdvancePayments;
+
+  @UI.identification: [ { position: 540, label: '' } ]
+  @UI.lineItem: [ { position: 540, importance: #MEDIUM, label: '' } ]
+  LeasePayment;
+
+  @UI.identification: [ { position: 550, label: '' } ]
+  @UI.lineItem: [ { position: 550, importance: #MEDIUM, label: '' } ]
+  AnnualInterestRate;
+
+  @UI.identification: [ { position: 560, label: '' } ]
+  @UI.lineItem: [ { position: 560, importance: #MEDIUM, label: '' } ]
+  DepreciationKeyAnlb01;
+
+  @UI.identification: [ { position: 570, label: '' } ]
+  @UI.lineItem: [ { position: 570, importance: #MEDIUM, label: '' } ]
+  UsefulLifeInYearsAnlb01;
+
+  @UI.identification: [ { position: 580, label: '' } ]
+  @UI.lineItem: [ { position: 580, importance: #MEDIUM, label: '' } ]
+  UsefulLifeInPeriodsAnlb01;
+
+  @UI.identification: [ { position: 590, label: '' } ]
+  @UI.lineItem: [ { position: 590, importance: #MEDIUM, label: '' } ]
+  DepreciationStartDate01;
+
+  @UI.identification: [ { position: 600, label: '' } ]
+  @UI.lineItem: [ { position: 600, importance: #MEDIUM, label: '' } ]
+  ScrapAmountCocdCrcyAnlb01;
+
+  @UI.identification: [ { position: 610, label: '' } ]
+  @UI.lineItem: [ { position: 610, importance: #MEDIUM, label: '' } ]
+  NegativeAmountIsAllowed01;
+
+  @UI.identification: [ { position: 620, label: '' } ]
+  @UI.lineItem: [ { position: 620, importance: #MEDIUM, label: '' } ]
+  DepreciationKeyAnlb15;
+
+  @UI.identification: [ { position: 630, label: '' } ]
+  @UI.lineItem: [ { position: 630, importance: #MEDIUM, label: '' } ]
+  UsefulLifeInYearsAnlb15;
+
+  @UI.identification: [ { position: 640, label: '' } ]
+  @UI.lineItem: [ { position: 640, importance: #MEDIUM, label: '' } ]
+  UsefulLifeInPeriodsAnlb15;
+
+  @UI.identification: [ { position: 650, label: '' } ]
+  @UI.lineItem: [ { position: 650, importance: #MEDIUM, label: '' } ]
+  DepreciationStartDate15;
+
+  @UI.identification: [ { position: 660, label: '' } ]
+  @UI.lineItem: [ { position: 660, importance: #MEDIUM, label: '' } ]
+  ScrapAmountCocdCrcyAnlb15;
+
+  @UI.identification: [ { position: 670, label: '' } ]
+  @UI.lineItem: [ { position: 670, importance: #MEDIUM, label: '' } ]
+  NegativeAmountIsAllowe15;
+
+  @UI.identification: [ { position: 680, label: '' } ]
+  @UI.lineItem: [ { position: 680, importance: #MEDIUM, label: '' } ]
+  ScrapAmountCocdCrcyAnlb31;
+
+  @UI.identification: [ { position: 690, label: '' } ]
+  @UI.lineItem: [ { position: 690, importance: #MEDIUM, label: '' } ]
+  ScrapAmountCocdCrcyAnlb35;
+
+  @UI.identification: [ { position: 700, label: '' } ]
+  @UI.lineItem: [ { position: 700, importance: #MEDIUM, label: '' } ]
+  ScrapAmountCocdCrcyAnlb41;
+
+  @UI.identification: [ { position: 710, label: '' } ]
+  @UI.lineItem: [ { position: 710, importance: #MEDIUM, label: '' } ]
+  ScrapAmountCocdCrcyAnlb45;
+
+  @UI.hidden: true
+  ReturnCriticalityCode;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}
