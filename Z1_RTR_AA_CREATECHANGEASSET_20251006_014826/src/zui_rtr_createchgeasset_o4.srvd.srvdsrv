@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service definition for ZC_RTR_CREATECHANGEASSETTP'
+@ObjectModel.leadingEntity.name: 'ZC_RTR_CREATECHANGEASSETTP'
+define service ZUI_RTR_CREATECHGEASSET_O4
+  provider contracts odata_v4_ui {
+  expose ZC_RTR_CreateChangeAssetTP as CreateChangeAsset;
+}

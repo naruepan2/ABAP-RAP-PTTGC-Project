@@ -1,0 +1,127 @@
+managed implementation in class zbp_r_rtr_createchangeassettp unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZR_RTR_CreateChangeAssetTP alias CreateChangeAsset
+persistent table ztrtr_0066_a
+draft table ztrtr_0066_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( global )
+
+{
+  field ( readonly )
+  AssetUUID,
+  CreatedAt,
+  CreatedBy,
+  LastChangedAt,
+  LastChangedBy,
+  LocalLastChangedAt;
+
+  field ( numbering : managed )
+  AssetUUID;
+
+  internal create;
+  internal update;
+  delete;
+
+  static action ( authorization : none ) DownloadAssetTemplate result [1] ZD_RTR_ASSETDOWNLOADTEMPLATE;
+  static action ( features : global, authorization : none ) UploadAssetFileContent parameter ZD_RTR_AssetFromExternalSource result [1] $self;
+  action ( features : instance, authorization : global ) SimulateCreateChangeAsset result [1] $self;
+  action ( features : instance, authorization : global ) PostCreateChangeAsset result [1] $self;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  side effects {
+    action SimulateCreateChangeAsset affects $self, messages;
+    action PostCreateChangeAsset affects $self, messages;
+  }
+
+  mapping for ztrtr_0066_a
+    {
+      AssetUUID                   = asset_uuid;
+      ProcessMode                 = process_mode;
+      MasterFixedAsset            = master_fixed_asset;
+      FixedAsset                  = fixed_asset;
+      AssetClass                  = asset_class;
+      CompanyCode                 = company_code;
+      FixedAssetDescription       = fixed_asset_description;
+      AssetAdditionalDescription  = asset_additional_description;
+      MasterFixedAssetDescription = master_fixed_asset_description;
+      AssetSerialNumber           = asset_serial_number;
+      Inventory                   = inventory;
+      Quantity                    = quantity;
+      Baseunit                    = baseunit;
+      LastInventoryDate           = last_inventory_date;
+      InventoryNote               = inventory_note;
+      ValidityStartDate           = validity_start_date;
+      CostCenter                  = cost_center;
+      ResponsibleCostCenter       = responsible_cost_center;
+      Plant                       = plant;
+      AssetLocation               = asset_location;
+      Room                        = room;
+      VehicleLicensePlateNumber   = vehicle_license_plate_number;
+      PersonnelNumber             = personnel_number;
+      ProfitCenter                = profit_center;
+      Segment                     = segment;
+      Group1AssetEvaluationKey    = group1_asset_evaluation_key;
+      Group2AssetEvaluationKey    = group2_asset_evaluation_key;
+      Group3AssetEvaluationKey    = group3_asset_evaluation_key;
+      Group4AssetEvaluationKey    = group4_asset_evaluation_key;
+      Group5AssetEvaluationKey    = group5_asset_evaluation_key;
+      FixedAssetGroup             = fixed_asset_group;
+      Supplier                    = supplier;
+      AssetSupplierName           = asset_supplier_name;
+      AssetStatusNewPurchase      = asset_status_new_purchase;
+      AssetStatusAtPurchase       = asset_status_at_purchase;
+      PartnerCompany              = partner_company;
+      AssetCountryOfOrigin        = asset_country_of_origin;
+      AssetTypeName               = asset_type_name;
+      InvestmentOrder             = investment_order;
+      InvestmentProjectWbsElement = investment_project_wbs_element;
+      LeaseSupplier               = lease_supplier;
+      LeaseAgreement              = lease_agreement;
+      LeaseAgreementDate          = lease_agreement_date;
+      LeaseTermEndDate            = lease_term_end_date;
+      LeaseTermStartDate          = lease_term_start_date;
+      LeaseDurationInFiscalYears  = lease_duration_in_fiscal_years;
+      LeaseDurationInFiscalPerio  = lease_duration_in_fiscal_perio;
+      LeaseType                   = lease_type;
+      CurrencyCode                = currency_code;
+      BaseValueAsNew              = base_value_as_new;
+      PurchasePrice               = purchase_price;
+      LeasedAssetNote             = leased_asset_note;
+      NoLeasePayments             = no_lease_payments;
+      PaymentCycle                = payment_cycle;
+      AdvancePayments             = advance_payments;
+      LeasePayment                = lease_payment;
+      AnnualInterestRate          = annual_interest_rate;
+      DepreciationKeyAnlb01       = depreciation_key_anlb01;
+      UsefulLifeInYearsAnlb01     = useful_life_in_years_anlb01;
+      UsefulLifeInPeriodsAnlb01   = useful_life_in_periods_anlb01;
+      DepreciationStartDate01     = depreciation_start_date01;
+      ScrapAmountCocdCrcyAnlb01   = scrap_amount_cocd_crcy_anlb01;
+      NegativeAmountIsAllowed01   = negative_amount_is_allowed01;
+      DepreciationKeyAnlb15       = depreciation_key_anlb15;
+      UsefulLifeInYearsAnlb15     = useful_life_in_years_anlb15;
+      UsefulLifeInPeriodsAnlb15   = useful_life_in_periods_anlb15;
+      DepreciationStartDate15     = depreciation_start_date15;
+      ScrapAmountCocdCrcyAnlb15   = scrap_amount_cocd_crcy_anlb15;
+      NegativeAmountIsAllowe15    = negative_amount_is_allowe15;
+      ScrapAmountCocdCrcyAnlb31   = scrap_amount_cocd_crcy_anlb31;
+      ScrapAmountCocdCrcyAnlb35   = scrap_amount_cocd_crcy_anlb35;
+      ScrapAmountCocdCrcyAnlb41   = scrap_amount_cocd_crcy_anlb41;
+      ScrapAmountCocdCrcyAnlb45   = scrap_amount_cocd_crcy_anlb45;
+      ReturnType                  = return_type;
+      ReturnMessage               = return_message;
+      CreatedBy                   = created_by;
+      CreatedAt                   = created_at;
+      LastChangedBy               = last_changed_by;
+      LastChangedAt               = last_changed_at;
+      LocalLastChangedAt          = local_last_changed_at;
+    }
+}
