@@ -1,0 +1,3 @@
+sap.ui.define(["sap/ui/core/mvc/ControllerExtension"],function(e){"use strict";return e.extend("zpttgc.rtr.createchangeasstermaster.ext.controller.AssetListReport",{override:{onInit:function(){},onBeforeRendering:function(){let e=this.base.getExtensionAP+
+I().getEditFlow().getView();if(e){e.byId("zpttgc.rtr.createchangeasstermaster::CreateChangeAssetList--fe::FilterBar::CreateChangeAsset::FilterField::DraftEditingStatus").setVisible(false)}}}})});                                                            
+//# sourceMappingURL=AssetListReport.controller.js.map                                                                                                                                                                                                         

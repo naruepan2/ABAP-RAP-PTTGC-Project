@@ -1,15 +1,21 @@
 projection;
 strict ( 2 );
 use draft;
-use side effects;
+//use side effects;
 
-define behavior for ZC_RTR_CREATECHANGEASSETTP alias CreateChangeAsset
-use etag
-
+define behavior for ZC_RTR_CreateChangeAssetTP alias CreateChangeAsset
 {
 //  use create;
 //  use update;
   use delete;
+
+  use action DownloadAssetTemplate;
+  use action UploadAssetFileContent;
+  use action RefreshCreateChangeAssetRecord;
+  use action SimulateCreateChangeAsset;
+  use action PostCreateChangeAsset;
+
+  use action CreateChangeAssetAppJob;
 
   use action Edit;
   use action Activate;
@@ -17,8 +23,13 @@ use etag
   use action Resume;
   use action Prepare;
 
-  use action DownloadAssetTemplate;
-  use action UploadAssetFileContent;
-  use action SimulateCreateChangeAsset;
-  use action PostCreateChangeAsset;
+  use association _CreateChangeAssetMsg { with draft; }
+}
+
+define behavior for ZC_RTR_CreateChangeAssetMsgTP alias CreateChangeAssetMsg
+{
+//  use update;
+//  use delete;
+
+  use association _CreateChangeAssetParent { with draft; }
 }

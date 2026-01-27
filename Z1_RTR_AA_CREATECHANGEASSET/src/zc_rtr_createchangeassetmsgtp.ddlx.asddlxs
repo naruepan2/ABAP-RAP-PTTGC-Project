@@ -1,0 +1,44 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName: 'Message', typeNamePlural: 'Messages' }
+
+// Search Term #LineItemHighlight
+@UI.lineItem: [ { criticality: 'ReturnCriticalityCode' } ]
+
+@UI.selectionVariant: [ { text: 'All', qualifier: 'ShowAll' },
+                        { text: 'Pending', qualifier: 'ShowPending', filter: 'ReturnType EQ " "' },
+                        { text: 'Error', qualifier: 'ShowError', filter: 'ReturnType EQ "E" OR ReturnType EQ "A"' },
+                        { text: 'Success', qualifier: 'ShowSuccess', filter: 'ReturnType EQ "S"' } ]
+
+annotate entity ZC_RTR_CreateChangeAssetMsgTP with
+{
+  @UI.hidden: true
+  ReturnMsgUUID;
+  @UI.hidden: true
+  AssetUUID;
+
+  @UI.lineItem: [ { position: 10,
+                    importance: #MEDIUM,
+                    label: '',
+                    criticality: 'ReturnCriticalityCode',
+                    criticalityRepresentation: #WITH_ICON } ]
+  @UI.textArrangement: #TEXT_ONLY
+  ReturnType;
+
+  @UI.hidden: true
+  ReturnTypeDescription;
+  
+  @UI.lineItem: [ { position: 20, importance: #MEDIUM, label: '' } ]  
+  RunType;  
+  
+  @UI.lineItem: [ { position: 30,
+                    importance: #MEDIUM,
+                    label: '' } ]
+  ReturnMessage;
+
+  @UI.hidden: true
+  ReturnCriticalityCode;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

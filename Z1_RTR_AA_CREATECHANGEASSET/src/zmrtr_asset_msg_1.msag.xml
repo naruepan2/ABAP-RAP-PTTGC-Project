@@ -26,6 +26,138 @@
      <MSGNR>002</MSGNR>
      <TEXT>Row &amp;1 Column &amp;2 : &amp;3</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>&amp;1 is mandatory field</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>No any records to deleted</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Data were deleted</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>No any records to &amp;1</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>&amp;1 must be filled any value</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>The records were processed in background with &amp;1 mode</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>Base Unit &amp;1 is not found</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>010</MSGNR>
+     <TEXT>Company Code &amp;1 is not found</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>011</MSGNR>
+     <TEXT>Asset &amp;1 Sub-number &amp;2 must be empty</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>012</MSGNR>
+     <TEXT>Sub-number must be empty</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>013</MSGNR>
+     <TEXT>&amp;1 is mandatory field. Cannot leave to blank</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>014</MSGNR>
+     <TEXT>Caution! Long selection times possible!</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>015</MSGNR>
+     <TEXT>Over maximum &amp;1 items selected, Select Create Application Job</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>016</MSGNR>
+     <TEXT>Program has been processing in background. Select View Application Job</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>017</MSGNR>
+     <TEXT>From Line No. &amp;1 is greater than To Line No. &amp;2</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>018</MSGNR>
+     <TEXT>There are no items to proceed</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>019</MSGNR>
+     <TEXT>Data has been processed in simulation mode. Click Go button to refresh</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>020</MSGNR>
+     <TEXT>Data has been processed in create/change mode. Click Go button to refresh</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>021</MSGNR>
+     <TEXT>&amp;1 is greater than &amp;2</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>022</MSGNR>
+     <TEXT>Asset Purchase New and Asset Used cannot be flag both &apos;X&apos;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>023</MSGNR>
+     <TEXT>Asset Purchase New and Asset Used cannot be leave blank &apos;!&apos;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZMRTR_ASSET_MSG_1</ARBGB>
+     <MSGNR>024</MSGNR>
+     <TEXT>File type must be one of Create/Create-Ex/Create-Sub/Change types</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>

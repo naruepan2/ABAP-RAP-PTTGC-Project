@@ -1,51 +1,105 @@
 @Metadata.layer: #CORE
 
-@UI.headerInfo: { typeName: 'Create Change Asset', typeNamePlural: 'Create Change Assets' }
+@UI.headerInfo: { typeName: 'Asset', typeNamePlural: 'Assets' }
+
+// Search Term #LineItemHighlight
+@UI.lineItem: [ { criticality: 'ReturnCriticalityCode' } ]
+
+@UI.selectionVariant: [ { text: 'All', qualifier: 'ShowAll' },
+                        { text: 'Pending', qualifier: 'ShowPending', filter: 'ReturnType EQ " "' },
+                        { text: 'Error', qualifier: 'ShowError', filter: 'ReturnType EQ "E" OR ReturnType EQ "A"' },
+                        { text: 'Success', qualifier: 'ShowSuccess', filter: 'ReturnType EQ "S"' } ]
 
 @UI.createHidden: true
 @UI.updateHidden: true
 
-// Search Term #LineItemHighlight
-@UI.lineItem: [{criticality: 'ReturnCriticalityCode'}]
-
-annotate view ZC_RTR_CreateChangeAssetTP with
+annotate entity ZC_RTR_CreateChangeAssetTP with
 
 {
-  @UI.facet: [ { id: 'idIdentification', type: #IDENTIFICATION_REFERENCE, label: 'CreateChangeAsset', position: 10 } ]
+  @UI.facet: [ { id: 'idIdentification',
+                 type: #IDENTIFICATION_REFERENCE,
+                 label: 'Upload Asset Information',
+                 position: 10 },
+               { id: 'idAssetMessage',
+                 type: #LINEITEM_REFERENCE,
+                 label: 'Upload Message',
+                 position: 20,
+                 targetElement: '_CreateChangeAssetMsg' } ]
   @UI.hidden: true
-  AssetUUID;
-
-  @UI.identification: [ { position: 1,
-                          label: '',
-                          criticality: 'ReturnCriticalityCode',
-                          criticalityRepresentation: #WITH_ICON } ]
-  @UI.lineItem: [ { position: 1,
-                    importance: #MEDIUM,
-                    label: '',
-                    criticality: 'ReturnCriticalityCode',
-                    criticalityRepresentation: #WITH_ICON } ]
-  @UI.textArrangement: #TEXT_ONLY                  
-  ReturnType;
-
-  @UI.identification: [ { position: 2, label: '' } ]
-  @UI.lineItem: [ { position: 2, importance: #MEDIUM, label: '' } ]
-  ReturnMessage;
-
-  @UI.identification: [ { position: 3, label: '' } ]
-  @UI.lineItem: [ { position: 3, importance: #MEDIUM, label: '' },
-                  { position: 10,
+  @UI.identification: [ { position: 10,
+                          type: #FOR_ACTION,
+                          dataAction: 'SimulateCreateChangeAsset',
+                          label: 'Simulate',
+                          invocationGrouping: #ISOLATED },
+                        { position: 20,
+                          type: #FOR_ACTION,
+                          dataAction: 'PostCreateChangeAsset',
+                          label: 'Create/Change',
+                          invocationGrouping: #ISOLATED } ]
+  @UI.lineItem: [ { position: 10,
+                    type: #FOR_ACTION,
+                    dataAction: 'CreateChangeAssetAppJob',
+                    label: 'Create Application Job' },
+                  { position: 20,
                     type: #FOR_ACTION,
                     dataAction: 'UploadAssetFileContent',
                     label: 'Upload',
                     hidden: true },
-                  { position: 20, type: #FOR_ACTION, dataAction: 'SimulateCreateChangeAsset', label: 'Simulate' },
-                  { position: 30, type: #FOR_ACTION, dataAction: 'PostCreateChangeAsset', label: 'Create/Change' },
+                  { position: 30,
+                    type: #FOR_ACTION,
+                    dataAction: 'SimulateCreateChangeAsset',
+                    label: 'Simulate',
+                    invocationGrouping: #CHANGE_SET },
                   { position: 40,
+                    type: #FOR_ACTION,
+                    dataAction: 'PostCreateChangeAsset',
+                    label: 'Create/Change',
+                    invocationGrouping: #CHANGE_SET },
+                  { position: 50,
+                    type: #FOR_ACTION,
+                    dataAction: 'RefreshCreateChangeAssetRecord',
+                    label: 'Clear All',
+                    hidden: true },
+                  { position: 60,
                     type: #FOR_ACTION,
                     dataAction: 'DownloadAssetTemplate',
                     label: 'Download Template',
                     hidden: true } ]
+  AssetUUID;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'ZI_RTR_ASSETMESSAGESTATUSVH', element: 'MessageStatus' } } ]
+  @UI.identification: [ { position: 1, label: '' } ]
+  @UI.lineItem: [ { position: 1, importance: #MEDIUM, label: '' } ]
+  @UI.selectionField: [ { position: 10 } ]
+  RunType;
+  
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'ZI_RTR_ASSETMESSAGETYPEVH', element: 'MessageValue' } } ]
+  @UI.identification: [ { position: 2,
+                          label: '',
+                          criticality: 'ReturnCriticalityCode',
+                          criticalityRepresentation: #WITH_ICON } ]
+  @UI.lineItem: [ { position: 2,
+                    importance: #MEDIUM,
+                    label: '',
+                    criticality: 'ReturnCriticalityCode',
+                    criticalityRepresentation: #WITH_ICON } ]
+  @UI.selectionField: [ { position: 20 } ]
+  @UI.textArrangement: #TEXT_ONLY
+  ReturnType;  
+
+  @UI.identification: [ { position: 3, label: '' } ]
+  @UI.lineItem: [ { position: 3, importance: #MEDIUM, label: '' } ]
+  ReturnMessage;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'ZI_RTR_ASSETPROCRESSMODEVH', element: 'ProcessMode' } } ]
+  @UI.identification: [ { position: 4, label: '' } ]
+  @UI.lineItem: [ { position: 4, importance: #MEDIUM, label: '' } ]
+  @UI.selectionField: [ { position: 30 } ]
   ProcessMode;
+  
+  @UI.identification: [ { position: 5, label: '' } ]
+  @UI.lineItem: [ { position: 5, label: '' } ]
+  AssetLineNo;
 
   @UI.identification: [ { position: 10, label: '' } ]
   @UI.lineItem: [ { position: 10, importance: #MEDIUM, label: '' } ]
@@ -59,6 +113,7 @@ annotate view ZC_RTR_CreateChangeAssetTP with
   @UI.lineItem: [ { position: 30, importance: #MEDIUM, label: '' } ]
   AssetClass;
 
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'I_CompanyCodeVH', element: 'CompanyCode' } } ]
   @UI.identification: [ { position: 40, label: '' } ]
   @UI.lineItem: [ { position: 40, importance: #MEDIUM, label: '' } ]
   CompanyCode;
@@ -87,6 +142,7 @@ annotate view ZC_RTR_CreateChangeAssetTP with
   @UI.lineItem: [ { position: 100, importance: #MEDIUM, label: '' } ]
   Quantity;
 
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'I_UnitOfMeasureStdVH', element: 'UnitOfMeasure' } } ]
   @UI.identification: [ { position: 110, label: '' } ]
   @UI.lineItem: [ { position: 110, importance: #MEDIUM, label: '' } ]
   Baseunit;
@@ -103,14 +159,17 @@ annotate view ZC_RTR_CreateChangeAssetTP with
   @UI.lineItem: [ { position: 140, importance: #MEDIUM, label: '' } ]
   ValidityStartDate;
 
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'I_CostCenterStdVH', element: 'CostCenter' } } ]
   @UI.identification: [ { position: 150, label: '' } ]
   @UI.lineItem: [ { position: 150, importance: #MEDIUM, label: '' } ]
   CostCenter;
 
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'I_CostCenterStdVH', element: 'CostCenter' } } ]
   @UI.identification: [ { position: 160, label: '' } ]
   @UI.lineItem: [ { position: 160, importance: #MEDIUM, label: '' } ]
   ResponsibleCostCenter;
 
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'I_PlantStdVH', element: 'Plant' } } ]
   @UI.identification: [ { position: 170, label: '' } ]
   @UI.lineItem: [ { position: 170, importance: #MEDIUM, label: '' } ]
   Plant;
@@ -131,6 +190,7 @@ annotate view ZC_RTR_CreateChangeAssetTP with
   @UI.lineItem: [ { position: 210, importance: #MEDIUM, label: '' } ]
   PersonnelNumber;
 
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'I_ProfitCenterVH', element: 'ProfitCenter' } } ]
   @UI.identification: [ { position: 220, label: '' } ]
   @UI.lineItem: [ { position: 220, importance: #MEDIUM, label: '' } ]
   ProfitCenter;
@@ -163,6 +223,7 @@ annotate view ZC_RTR_CreateChangeAssetTP with
   @UI.lineItem: [ { position: 290, importance: #MEDIUM, label: '' } ]
   FixedAssetGroup;
 
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'I_Supplier_VH', element: 'Supplier' } } ]
   @UI.identification: [ { position: 300, label: '' } ]
   @UI.lineItem: [ { position: 300, importance: #MEDIUM, label: '' } ]
   Supplier;
@@ -171,13 +232,17 @@ annotate view ZC_RTR_CreateChangeAssetTP with
   @UI.lineItem: [ { position: 310, importance: #MEDIUM, label: '' } ]
   AssetSupplierName;
 
+  @UI.identification: [ { position: 315, label: '' } ]
+  @UI.lineItem: [ { position: 315, importance: #MEDIUM, label: '' } ]  
+  AssetManufacturerName;
+
   @UI.identification: [ { position: 320, label: '' } ]
   @UI.lineItem: [ { position: 320, importance: #MEDIUM, label: '' } ]
   AssetStatusNewPurchase;
 
   @UI.identification: [ { position: 330, label: '' } ]
   @UI.lineItem: [ { position: 330, importance: #MEDIUM, label: '' } ]
-  AssetStatusAtPurchase;
+  AssetStatusUsePurchase;
 
   @UI.identification: [ { position: 340, label: '' } ]
   @UI.lineItem: [ { position: 340, importance: #MEDIUM, label: '' } ]
@@ -231,6 +296,7 @@ annotate view ZC_RTR_CreateChangeAssetTP with
   @UI.lineItem: [ { position: 460, importance: #MEDIUM, label: '' } ]
   LeaseType;
 
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'I_CurrencyStdVH', element: 'Currency' } } ]
   @UI.identification: [ { position: 470, label: '' } ]
   @UI.lineItem: [ { position: 470, importance: #MEDIUM, label: '' } ]
   CurrencyCode;
@@ -313,7 +379,7 @@ annotate view ZC_RTR_CreateChangeAssetTP with
 
   @UI.identification: [ { position: 670, label: '' } ]
   @UI.lineItem: [ { position: 670, importance: #MEDIUM, label: '' } ]
-  NegativeAmountIsAllowe15;
+  NegativeAmountIsAllowed15;
 
   @UI.identification: [ { position: 680, label: '' } ]
   @UI.lineItem: [ { position: 680, importance: #MEDIUM, label: '' } ]

@@ -1,10 +1,10 @@
-managed implementation in class zbp_r_rtr_createchangeassettp unique;
+managed with additional save with full data implementation in class zbp_r_rtr_createchangeassettp unique;
 strict ( 2 );
 with draft;
 
 define behavior for ZR_RTR_CreateChangeAssetTP alias CreateChangeAsset
-persistent table ztrtr_0066_a
-draft table ztrtr_0066_d
+persistent table ztrtr_0102_01_a
+draft table ztrtr_0102_01_d
 etag master LocalLastChangedAt
 lock master total etag LastChangedAt
 authorization master ( global )
@@ -21,14 +21,20 @@ authorization master ( global )
   field ( numbering : managed )
   AssetUUID;
 
-  internal create;
-  internal update;
+  create;
+  update;
   delete;
 
+  event SimulateCreateChangeAssetEvent;
+  event PostCreateChangeAssetEvent;
+
   static action ( authorization : none ) DownloadAssetTemplate result [1] ZD_RTR_ASSETDOWNLOADTEMPLATE;
-  static action ( features : global, authorization : none ) UploadAssetFileContent parameter ZD_RTR_AssetFromExternalSource result [1] $self;
-  action ( features : instance, authorization : global ) SimulateCreateChangeAsset result [1] $self;
-  action ( features : instance, authorization : global ) PostCreateChangeAsset result [1] $self;
+  static action ( features : global, authorization : none ) UploadAssetFileContent parameter ZD_RTR_AssetFromExternalSource;
+  static action ( features : global, authorization : none ) RefreshCreateChangeAssetRecord result [0..1] ZD_RTR_ASSETRESETRETURN;
+  action ( features : instance, authorization : global, lock : none, precheck ) SimulateCreateChangeAsset; //result [1] $self;
+  action ( features : instance, authorization : global, lock : none, precheck ) PostCreateChangeAsset; //result [1] $self;
+
+  static action ( features : global, authorization : none ) CreateChangeAssetAppJob deep parameter ZD_RTR_ASSETPROCESSMODE;
 
   draft action Edit;
   draft action Activate optimized;
@@ -36,15 +42,17 @@ authorization master ( global )
   draft action Resume;
   draft determine action Prepare;
 
-  side effects {
-    action SimulateCreateChangeAsset affects $self, messages;
-    action PostCreateChangeAsset affects $self, messages;
-  }
+//  side effects
+//  {
+//    action SimulateCreateChangeAsset affects $self, entity _CreateChangeAssetMsg;
+//    action PostCreateChangeAsset affects $self, entity _CreateChangeAssetMsg;
+//  }
 
-  mapping for ztrtr_0066_a
+  mapping for ztrtr_0102_01_a
     {
       AssetUUID                   = asset_uuid;
       ProcessMode                 = process_mode;
+      AssetLineNo                 = asset_line_no;
       MasterFixedAsset            = master_fixed_asset;
       FixedAsset                  = fixed_asset;
       AssetClass                  = asset_class;
@@ -76,8 +84,9 @@ authorization master ( global )
       FixedAssetGroup             = fixed_asset_group;
       Supplier                    = supplier;
       AssetSupplierName           = asset_supplier_name;
+      AssetManufacturerName       = asset_manufacturer_name;
       AssetStatusNewPurchase      = asset_status_new_purchase;
-      AssetStatusAtPurchase       = asset_status_at_purchase;
+      AssetStatusUsePurchase      = asset_status_at_purchase;
       PartnerCompany              = partner_company;
       AssetCountryOfOrigin        = asset_country_of_origin;
       AssetTypeName               = asset_type_name;
@@ -111,12 +120,14 @@ authorization master ( global )
       UsefulLifeInPeriodsAnlb15   = useful_life_in_periods_anlb15;
       DepreciationStartDate15     = depreciation_start_date15;
       ScrapAmountCocdCrcyAnlb15   = scrap_amount_cocd_crcy_anlb15;
-      NegativeAmountIsAllowe15    = negative_amount_is_allowe15;
+      NegativeAmountIsAllowed15   = negative_amount_is_allowed15;
       ScrapAmountCocdCrcyAnlb31   = scrap_amount_cocd_crcy_anlb31;
       ScrapAmountCocdCrcyAnlb35   = scrap_amount_cocd_crcy_anlb35;
       ScrapAmountCocdCrcyAnlb41   = scrap_amount_cocd_crcy_anlb41;
       ScrapAmountCocdCrcyAnlb45   = scrap_amount_cocd_crcy_anlb45;
+      IsProcessed                 = is_processed;
       ReturnType                  = return_type;
+      RunType                     = run_type;
       ReturnMessage               = return_message;
       CreatedBy                   = created_by;
       CreatedAt                   = created_at;
@@ -124,4 +135,47 @@ authorization master ( global )
       LastChangedAt               = last_changed_at;
       LocalLastChangedAt          = local_last_changed_at;
     }
+
+  association _CreateChangeAssetMsg { create; with draft; }
+}
+
+define behavior for ZR_RTR_CreateChangeAssetMsgTP alias CreateChangeAssetMsg
+persistent table ztrtr_0102_02_a
+draft table ztrtr_0102_02_d
+etag master LocalLastChangedAt
+lock dependent by _CreateChangeAssetParent
+authorization dependent by _CreateChangeAssetParent
+{
+  update;
+  delete;
+
+  field ( numbering : managed )
+  ReturnMsgUuid;
+
+  field ( readonly )
+  ReturnMsgUuid,
+  CreatedAt,
+  CreatedBy,
+  LastChangedAt,
+  LastChangedBy,
+  LocalLastChangedAt;
+
+  field ( readonly : update )
+  AssetUUID;
+
+  mapping for ztrtr_0102_02_a
+    {
+      ReturnMsgUUID      = return_msg_uuid;
+      AssetUUID          = asset_uuid;
+      ReturnType         = return_type;
+      RunType            = run_type;
+      ReturnMessage      = return_message;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LastChangedBy      = last_changed_by;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+
+  association _CreateChangeAssetParent { with draft; }
 }

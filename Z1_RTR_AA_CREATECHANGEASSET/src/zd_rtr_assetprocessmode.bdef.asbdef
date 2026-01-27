@@ -1,0 +1,8 @@
+abstract;
+strict ( 2 );
+with hierarchy;
+
+define behavior for ZD_RTR_ASSETPROCESSMODE alias AssetProcessMode with control
+{
+  field ( mandatory : execute ) ProcessMode;
+}

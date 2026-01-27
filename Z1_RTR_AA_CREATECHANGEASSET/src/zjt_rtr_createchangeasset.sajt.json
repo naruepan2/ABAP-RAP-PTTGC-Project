@@ -1,0 +1,23 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Job Template RTR Create/Change Asset",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "catalogName": "ZJCE_RTR_CREATECHANGEASSET"
+  },
+  "parameters": {
+    "valueRangesParameters": [
+      {
+        "name": "SO_MODE",
+        "valueRanges": []
+      },
+      {
+        "name": "SO_UUID",
+        "valueRanges": []
+      }
+    ]
+  }
+}

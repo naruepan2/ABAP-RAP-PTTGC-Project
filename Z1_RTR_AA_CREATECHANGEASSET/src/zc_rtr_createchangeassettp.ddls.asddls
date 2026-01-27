@@ -1,4 +1,4 @@
-@AccessControl.authorizationCheck: #CHECK
+@AccessControl.authorizationCheck: #NOT_REQUIRED
 
 @EndUserText.label: 'Proj.View Create and Change Asset Master'
 
@@ -6,14 +6,20 @@
 
 @ObjectModel.usageType: { dataClass: #MIXED, serviceQuality: #X, sizeCategory: #XXL }
 
+@ObjectModel.representativeKey: 'AssetUUID'
+
 define root view entity ZC_RTR_CreateChangeAssetTP
   provider contract transactional_query
   as projection on ZR_RTR_CreateChangeAssetTP
-
+  
+  redefine association _CreateChangeAssetMsg redirected to composition child ZC_RTR_CreateChangeAssetMsgTP
+  
 {
   key AssetUUID,
       @EndUserText:{ label: 'File Type', quickInfo: 'File Type' }
       ProcessMode,
+      @EndUserText:{ label: 'Line No.', quickInfo: 'Line No.' }
+      AssetLineNo,
       MasterFixedAsset,
       FixedAsset,
       AssetClass,
@@ -45,14 +51,19 @@ define root view entity ZC_RTR_CreateChangeAssetTP
       FixedAssetGroup,
       Supplier,
       AssetSupplierName,
+      AssetManufacturerName,
       @EndUserText:{ label: 'Asset Purchase New', quickInfo: 'Asset Purchase New' }
       AssetStatusNewPurchase,
-      AssetStatusAtPurchase,
+      @EndUserText:{ label: 'Asset Acquired Used', quickInfo: 'Asset Acquired Used' }
+      AssetStatusUsePurchase,
       PartnerCompany,
       AssetCountryOfOrigin,
       AssetTypeName,
       InvestmentOrder,
+      @ObjectModel.text.element: [ 'WBSDescription' ]
       InvestmentProjectWbsElement,
+      @UI.hidden: true
+      _WBSElementData.WBSDescription,
       LeaseSupplier,
       LeaseAgreement,
       LeaseAgreementDate,
@@ -61,6 +72,7 @@ define root view entity ZC_RTR_CreateChangeAssetTP
       LeaseDurationInFiscalYears,
       LeaseDurationInFiscalPerio,
       LeaseType,
+      @UI.hidden: true
       CurrencyCode,
       @EndUserText:{ label: 'Base value as new', quickInfo: 'Base value as new' }
       BaseValueAsNew,
@@ -100,8 +112,8 @@ define root view entity ZC_RTR_CreateChangeAssetTP
       @EndUserText:{ label: 'Scrap value (15)', quickInfo: 'Scrap value (15)' }
       ScrapAmountCocdCrcyAnlb15,
       @EndUserText:{ label: 'Negative Values Allowed (15)', quickInfo: 'Negative Values Allowed (15)' }
-      NegativeAmountIsAllowe15,
-      @EndUserText:{ label: 'Scrap value (35)', quickInfo: 'Scrap value (31)' }
+      NegativeAmountIsAllowed15,
+      @EndUserText:{ label: 'Scrap value (31)', quickInfo: 'Scrap value (31)' }
       ScrapAmountCocdCrcyAnlb31,
       @EndUserText:{ label: 'Scrap value (35)', quickInfo: 'Scrap value (35)' }
       ScrapAmountCocdCrcyAnlb35,
@@ -112,17 +124,21 @@ define root view entity ZC_RTR_CreateChangeAssetTP
       @ObjectModel.text.element: [ 'ReturnTypeDescription' ]
       ReturnType,
       ReturnTypeDescription,
+      @EndUserText:{ label: 'Message Status', quickInfo: 'Message Status' }
+      RunType,
       ReturnMessage,
       ReturnCriticalityCode,
       LocalLastChangedAt,
 
       /* Associations */
+      _CreateChangeAssetMsg,
       _CompanyCode,
       _CostCenter,
       _Currency,
       _Plant,
       _ProfitCenter,
       _ResponsibleCostCenter,
+      _WBSElementData,
       _Supplier,
       _UnitOfMeasure
 }
