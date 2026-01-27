@@ -1,0 +1,12 @@
+abstract;
+strict ( 2 );
+with hierarchy;
+
+define behavior for ZD_RTR_AP_JournalEntryReverse alias JournalEntryReverse with control
+{
+  field ( mandatory : execute )
+  CompanyCode,
+  AccountingDocument,
+  FiscalYear,
+  ReversalReason;
+}

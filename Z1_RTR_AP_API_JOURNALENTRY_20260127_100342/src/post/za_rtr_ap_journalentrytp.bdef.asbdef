@@ -1,0 +1,11 @@
+projection;
+strict ( 2 );
+//strict ( 1 );   // To support BAPI with destination 'NONE' in save phase
+//with privileged mode disabling base context;
+
+define behavior for ZA_RTR_AP_JOURNALENTRYTP alias JournalEntry
+{
+  use action Post;
+  use action Reverse;
+  use action Clearing;
+}
