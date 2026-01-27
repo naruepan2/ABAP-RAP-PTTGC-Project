@@ -1,0 +1,12 @@
+@EndUserText.label: 'Journal Entry Tax Item'
+define abstract entity ZD_RTR_AP_JournalEntryTaxItems
+{
+  key DummyKey                    : abap.char(1);
+      ReferenceDocumentItem       : docln6;
+      TaxCode                     : mwskz;
+      AmountInTransactionCurrency : ze_rtr_ap_journalentry_amount; //(CURTP)= 00
+      AmountInCompanyCodeCurrency : ze_rtr_ap_journalentry_amount; //(CURTP)= 10
+      TaxBaseAmountInTransCrcy    : ze_rtr_ap_journalentry_amount; //(CURTP)= 00
+      TaxBaseAmountInCoCodeCrcy   : ze_rtr_ap_journalentry_amount; //(CURTP)= 10
+      _Parent                     : association to parent ZD_RTR_AP_JournalEntryPostI1 on $projection.DummyKey = _Parent.DummyKey;
+}

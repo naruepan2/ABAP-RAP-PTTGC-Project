@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition Journal Entry'
+define service ZAPI_RTR_JOURNALENTRY_O4
+  provider contracts odata_v4_webapi {
+  expose ZA_RTR_AP_JOURNALENTRYTP as JournalEntry;
+}

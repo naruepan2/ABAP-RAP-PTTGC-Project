@@ -1,0 +1,83 @@
+abstract;
+strict ( 2 );
+with hierarchy;
+
+define behavior for ZD_RTR_AP_JournalEntryPostI1 alias JournalEntryPost with control
+{
+  field ( suppress ) DummyKey;
+  field ( mandatory : execute )
+  OriginalReferenceDocumentType,
+  BusinessTransactionType,
+  AccountingDocumentType,
+  CompanyCode,
+  DocumentDate,
+  PostingDate,
+  CurrencyCode;
+
+  association _Item;
+  association _DebtorItem;
+  association _CreditorItem;
+  association _ProductTaxItem;
+  association _WithHoldingTaxItem;
+}
+
+define behavior for ZD_RTR_AP_JournalEntryAPItems alias JournalEntryAPItems with control
+{
+  field ( suppress ) DummyKey;
+  field ( mandatory : execute )
+  ReferenceDocumentItem,
+  Creditor,
+  AmountInTransactionCurrency,
+  DebitCreditCode;
+
+  association _Parent;
+}
+
+define behavior for ZD_RTR_AP_JournalEntryARItems alias JournalEntryARItems with control
+{
+  field ( suppress ) DummyKey;
+  field ( mandatory : execute )
+  ReferenceDocumentItem,
+  Debtor,
+  AmountInTransactionCurrency,
+  DebitCreditCode;
+
+  association _Parent;
+}
+
+define behavior for ZD_RTR_AP_JournalEntryGLItems alias JournalEntryGLItems with control
+{
+  field ( suppress ) DummyKey;
+  field ( mandatory : execute )
+  ReferenceDocumentItem,
+  GLAccount,
+  AmountInTransactionCurrency,
+  DebitCreditCode;
+
+  association _Parent;
+}
+
+define behavior for ZD_RTR_AP_JournalEntryTaxItems alias JournalEntryTaxItems with control
+{
+  field ( suppress ) DummyKey;
+  field ( mandatory : execute )
+  ReferenceDocumentItem,
+  TaxCode,
+  AmountInTransactionCurrency,
+  TaxBaseAmountInTransCrcy;
+
+  association _Parent;
+}
+
+define behavior for ZD_RTR_AP_JournalEntryWHTItems alias JournalEntryWHTItems with control
+{
+  field ( suppress ) DummyKey;
+  field ( mandatory : execute )
+  ReferenceDocumentItem,
+  WithholdingTaxType,
+  WithholdingTaxCode,
+  AmountInTransactionCurrency,
+  TaxBaseAmountInTransCrcy;
+
+  association _Parent;
+}
