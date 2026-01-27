@@ -1,0 +1,23 @@
+abstract;
+strict ( 2 );
+with hierarchy;
+
+define behavior for ZD_EXT_MessageReturnR alias parent
+{
+
+  field ( suppress )
+  Dummy1;
+
+  association Return ;
+}
+
+define behavior for ZD_EXT_MessageReturn alias child
+{
+
+  field ( suppress )
+  Dummy1,
+  Dummy2;
+
+  association _Parent;
+
+}

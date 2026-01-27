@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_EXT_EMAIL_UTILITIES</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Class Utilities for Email on Cloud</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>5</UNICODE>
+    <RSTAT>K</RSTAT>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>C_DOMAIN</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>CHAR08 data element for SYST</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>C_PRD_SYSID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>CHAR08 data element for SYST</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>DET_SUBJECT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>If not production system concat &apos;[SY-SYSIDSY-MANDT]&apos;</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_EMAIL_TEMPLATE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[TOBEDELETE] Get Subject, Body from Email Template</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>REPLACE_VAR_WITH_T_DATA_KEY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Replace {{variable}} with IT_DATA_KEY</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SET_PLACEHOLDER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>set placeholder</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SET_PLACEHOLDER_ITAB</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>set Itab Placeholder</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>_REPLACE_PLACEHOLDER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Replace placeholder than CDS</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_EMAIL_TEMPLATE</CMPNAME>
+     <SCONAME>IV_LANGUAGE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Language Key</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SEND_EMAIL</CMPNAME>
+     <SCONAME>IV_ADDRESS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Not used (Default by system)</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

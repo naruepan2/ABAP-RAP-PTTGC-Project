@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_EXT_ABAP_UTILITIES</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Class Utilities for ABAP Cloud</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>5</UNICODE>
+    <RSTAT>K</RSTAT>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>C_MSGTY_E</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Type</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>SY_TO_S_MSG</CMPNAME>
+     <SCONAME>IV_MSGTY</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Type</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SY_TO_S_MSG</CMPNAME>
+     <SCONAME>RS_MSG</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Return Parameter</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SY_TO_T_MSG</CMPNAME>
+     <SCONAME>CT_MSG</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Return table</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SY_TO_T_MSG</CMPNAME>
+     <SCONAME>IV_MSGTY</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Type</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>ZSPELL_AMOUNT</CMPNAME>
+     <SCONAME>EV_SPELL_AMOUNT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Transfer structure for amounts rendered in words</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>ZSPELL_AMOUNT</CMPNAME>
+     <SCONAME>IV_CURRENCY</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>SD Document Currency</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>ZSPELL_AMOUNT</CMPNAME>
+     <SCONAME>IV_LANGUAGE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Language Key</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

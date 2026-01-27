@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_EXT_BATCH_UTILITIES</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Class Utilities for Batch</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>5</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>_BAPIRET2</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Return Parameter</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>UPDATE_BATCH_WITH_AVG_VALUE</CMPNAME>
+     <SCONAME>ET_RETURN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Return Parameter</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>UPDATE_BATCH_WITH_AVG_VALUE</CMPNAME>
+     <SCONAME>EV_ERROR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Truth Value: True/False</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>UPDATE_BATCH_WITH_AVG_VALUE</CMPNAME>
+     <SCONAME>IV_COMMIT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Truth Value: True/False</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>UPDATE_BATCH_WITH_AVG_VALUE</CMPNAME>
+     <SCONAME>_DEST_</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Logical destination (specified in function call)</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>_BAPI_OBJCL_GETDETAIL_OF_BATCH</CMPNAME>
+     <SCONAME>ET_RETURN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Return Parameter</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>_BAPI_OBJCL_GETDETAIL_OF_BATCH</CMPNAME>
+     <SCONAME>EV_ERROR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Truth Value: True/False</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>_BAPI_OBJCL_GETDETAIL_OF_BATCH</CMPNAME>
+     <SCONAME>_DEST_</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Logical destination (specified in function call)</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>
