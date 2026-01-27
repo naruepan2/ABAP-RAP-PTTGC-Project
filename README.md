@@ -19,5 +19,10 @@ This repository contains a set of ABAP RAP-based components designed to accelera
 - **Template Generator**: Quick-start templates for RAP development
 
 ## 📁 Repository Structure
-
+ABAP-RAP-PTTGC-Project/
+├── Z1_EXT_ABAP_UTILITIES/src # Extended ABAP utilities library
+├── Z1_RTR_AA_CREATECHANGEASSET/src # Asset creation and change RAP objects
+├── Z1_RTR_AP_API_JOURNALENTRY/src # Journal entry API implementation
+├── TEST_DEMO_20260127_100149.zip # Demo package for testing
+└── README.md # This documentation file
 
