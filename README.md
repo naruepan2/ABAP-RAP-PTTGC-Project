@@ -26,3 +26,19 @@ ABAP-RAP-PTTGC-Project/
 ├── TEST_DEMO_20260127_100149.zip # Demo package for testing
 └── README.md # This documentation file
 
+
+## 🔧 Prerequisites
+
+- SAP S/4HANA 2022 or higher
+- ABAP Development Tools (ADT) for Eclipse
+- Basic knowledge of ABAP RAP framework
+- SAP Cloud Platform ABAP Environment (for cloud deployment)
+
+## 📦 Installation
+
+### Local Development System
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/[your-username]/ABAP-RAP-PTTGC-Project.git
+
